@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estacionamiento de automóviles</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🚗 Estacionamiento de automóviles</h1>
+      <p>Registro y ubicación de espacios para automóviles</p>
+    </header>
+
+    <section class="panel">
+      <h2 id="form-title">Registrar estacionamiento</h2>
+      <form id="parking-form">
+        <input type="hidden" id="record-id">
+        <label>Nombre del estacionamiento
+          <input id="nombre" required maxlength="100" placeholder="Ej.: Estacionamiento Centro">
+        </label>
+        <div class="two">
+          <label>Latitud
+            <input id="latitud" type="number" step="any" required placeholder="-25.2867">
+          </label>
+          <label>Longitud
+            <input id="longitud" type="number" step="any" required placeholder="-57.3333">
+          </label>
+        </div>
+        <label>Cantidad de espacios para autos
+          <input id="cantidad_lugares" type="number" min="1" step="1" required>
+        </label>
+        <label>Predio
+          <input id="predio" required placeholder="Ej.: Campus, local o terreno">
+        </label>
+        <label>Cobertura
+          <select id="cobertura" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Techado">Techado</option>
+            <option value="Al aire libre">Al aire libre</option>
+          </select>
+        </label>
+        <div class="actions">
+          <button type="submit">Guardar estacionamiento</button>
+          <button type="button" id="cancel-edit" class="secondary" hidden>Cancelar edición</button>
+        </div>
+        <p id="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-heading">
+        <h2>Estacionamientos registrados</h2>
+        <label class="filter">Filtrar cobertura
+          <select id="filter">
+            <option value="">Todos</option>
+            <option value="Techado">Techado</option>
+            <option value="Al aire libre">Al aire libre</option>
+          </select>
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nombre</th><th>Espacios</th><th>Predio</th><th>Cobertura</th><th>Acciones</th></tr></thead>
+          <tbody id="records"><tr><td colspan="5">Cargando...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Ubicación en Google Maps</h2>
+      <p id="map-label">Selecciona un estacionamiento de la lista.</p>
+      <iframe id="map" title="Mapa del estacionamiento" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
