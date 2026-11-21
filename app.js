@@ -1,6 +1,6 @@
 // Configura estos dos valores con los datos de TU proyecto Supabase.
 const SUPABASE_URL = "PEGAR_AQUI_URL_DEL_PROYECTO";
-const SUPABASE_ANON_KEY = "PEGAR_AQUI_CLAVE_PUBLICABLE";
+const SUPABASE_ANON_KEY = "sb_publishable_IFN8PjcQ9nATaJ1tiYMddA_secwucQR";
 
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const form = document.getElementById("parking-form");
